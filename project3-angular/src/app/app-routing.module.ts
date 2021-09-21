@@ -7,6 +7,7 @@ import { ReadlistComponent } from './components/readlist/readlist.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductsComponent } from './components/products/products.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:'full' },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'readlist', component: ReadlistComponent },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: "profile", component:ProfileComponent},
+
+  // this one needs to be last i guess
   { path: '**', component: PageNotFoundComponent }
 ];
 
