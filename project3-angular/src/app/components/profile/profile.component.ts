@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ReadlistService } from 'src/app/services/readlist.service';
 import { IReadlist } from 'src/app/models/readlist.model';
-import { UserService } from 'src/app/user/user.service';
-import { User } from 'src/app/user/user';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/services/user';
+import { UserProfileService } from 'src/app/services/user-profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +11,8 @@ import { User } from 'src/app/user/user';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+  displayedPage: number = 0;
 
   readlists: IReadlist[] = [];
   userLoggedIn: boolean = false;
@@ -25,7 +28,7 @@ export class ProfileComponent implements OnInit {
   };
 
   constructor(private readlistService: ReadlistService,
-    private userService: UserService) { }
+    private userService: UserService, private profileService: UserProfileService) { }
 
     ngOnInit(): void {
       this.userLoggedIn = false;
@@ -53,6 +56,10 @@ export class ProfileComponent implements OnInit {
   
     public addBook(bookISBN: number) { 
       this.readlistService.addReadlistEntry(bookISBN);
+    }
+
+    public changePage(pageNumber: number) {
+      this.displayedPage = pageNumber;
     }
 
 }
