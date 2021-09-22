@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row" style="text-shadow: 2px 2px #000000;">
                 <h2 class="text-center text-light" *ngIf="userLoggedIn"><span>Profile of {{ currentUser.firstName }} {{ currentUser.lastName }}</span>  </h2>
-                <h2 class="text-center text-light" *ngIf="!userLoggedIn"><span>Please Log In</span></h2>
+                <h2 class="text-center text-light" *ngIf="!userLoggedIn"><span></span></h2>
             </div>
             <div class="col-md-10 offset-md-1 row-block scrollable">
                 <ul id="sortable">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="media" *ngIf="!userLoggedIn">
                         <div class="media-body" style="text-align: center;">
-                            <h4>Please login to view your readlist.</h4>
+                            <h4>Please login to view your profile.</h4>
                             <img class="linebreak" src="/assets/img/linebreakImg.png">
                             <a href="/login">Login</a>
                         </div>
