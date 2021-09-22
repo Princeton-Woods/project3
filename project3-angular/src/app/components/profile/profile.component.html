@@ -20,7 +20,8 @@
                                 <div class="media-body" style="text-align: center;">
                                     <h4>Please login to view your profile.</h4>
                                     <img class="linebreak" src="/assets/img/linebreakImg.png">
-                                    <a href="/login">Login</a>
+                                    <button class="btn btn-secondary" routerLink="/login">Login</button>
+
                                 </div>
                             </div>
                         
@@ -57,7 +58,7 @@
                 <form action="">
 
                     <div class="container-fluid p-3  bg-light scrollable-container">
-                        <div class="media" *ngIf="!userLoggedIn">
+                        <div class="media">
     
                             <div class="form-group">
                                 <label class="h3" for="exampleFormControlTextarea1">About Me</label>
@@ -72,7 +73,7 @@
             </div>
 
             <div *ngIf= "displayedPage == 1">
-                <div class="col-md-10 offset-md-1 row-block scrollable">
+                <div class="col-md-10 offset-md-1 my-3 row-block scrollable">
                     <ul id="sortable">
                         <li *ngFor="let readlist of readlists">
     
@@ -97,7 +98,10 @@
                             <div class="media-body" style="text-align: center;">
                                 <h4>You can add books to your readlist from the store page!</h4>
                                 <img class="linebreak" src="/assets/img/linebreakImg.png">
+                                <button class="btn btn-secondary" routerLink="/products">Go to Products</button>
+
                             </div>
+
                         </div>
     
                         
