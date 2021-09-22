@@ -10,6 +10,7 @@
                 <h2 class="text-center text-light" *ngIf="!userLoggedIn"><span></span></h2>
             </div>
 
+            <!-- User not logged in, redirect to login page with button -->
             <div *ngIf="!userLoggedIn">
                 <div class="col-md-10 offset-md-1 p-3 row-block scrollable">
                     <ul id="sortable">
@@ -29,6 +30,7 @@
                 </div>
             </div>
 
+            <!-- logic if user is logged in -->
             <div *ngIf="userLoggedIn">
 
                 <!-- Change displayed page -->
@@ -36,8 +38,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" (click)="changePage(0)" >About Me</a>
+                            <a class="nav-link" (click)="changePage(0)" >My Profile</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" (click)="changePage(1)">My Reading List</a>
                         </li>
@@ -53,24 +56,74 @@
                     </div>
                 </nav>
 
-                
             <div *ngIf="displayedPage == 0">
                 <form action="">
 
                     <div class="container-fluid p-3  bg-light scrollable-container">
-                        <div class="media">
-    
-                            <div class="form-group">
-                                <label class="h3" for="exampleFormControlTextarea1">About Me</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Tell us a little about you!" rows="25" cols="200"></textarea>
-                            </div>
-                        
+                        <div *ngIf="!editingPage">
+                            <h1>My Profile</h1>
+                            <br>
+                            <br>
+                            <h4>Name</h4>
+                            <h5>{{ currentUser.firstName }}  {{ currentUser.lastName }}</h5>
+                            <hr>
+                            <h4>Email</h4>
+                            <h5>{{ currentUser.email }}</h5>
+                            <hr>
+                            <h4>Mobile</h4>
+                            <h5>{{ currentUser.mobile }}</h5>
+                            <hr>
+                            <h3>About me</h3>
+                            <p>The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.</p>
+                            <button class="btn btn-secondary" (click)="editAboutMe()">Edit</button>
                         </div>
+
+                        <div *ngIf="editingPage">
+                            <div class="container">
+                                <div class="media">
+    
+                                    <div class="form-group">
+                                        <h1>Editing My Profile</h1>
+                                        <br>
+                                        <br>
+                                        <h4>First Name</h4>
+                                        <input type="text" name="" id="" placeholder="{{ currentUser.firstName }}">
+                                        <h4>Last Name</h4>
+                                        <input type="text" name="" id="" placeholder="{{ currentUser.lastName }}">
+    
+                                        <hr>
+                                        <h4>Email</h4>
+                                        <input type="email" name="" id="" placeholder="{{ currentUser.email }}">
+    
+                                        <hr>
+                                        <h4>Mobile</h4>
+                                        <input type="tel" name="" id="" placeholder="{{ currentUser.mobile }}">
+                                        <hr>
+                                        
+                                        <div class="media">
+                
+                                            <div class="form-group">
+                                                <label class="h3" for="exampleFormControlTextarea1">About Me</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Tell us a little about you!" rows="15" cols="200"></textarea>
+
+                                            </div>
+
+                                        </div>
+                                        <button class="btn btn-secondary" (click)="saveEdits()">Save</button>
+                                    </div>
+                            </div>
+                            
+                                
+
+                            
+                            </div>
+                        </div>
+                        
                     
                     </div>
     
                 </form>
-            </div>
+            </div>             
 
             <div *ngIf= "displayedPage == 1">
                 <div class="col-md-10 offset-md-1 my-3 row-block scrollable">

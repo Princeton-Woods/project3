@@ -13,6 +13,7 @@ import { UserProfileService } from 'src/app/services/user-profile.service';
 export class ProfileComponent implements OnInit {
 
   displayedPage: number = 0;
+  editingPage: boolean = false;
 
   readlists: IReadlist[] = [];
   userLoggedIn: boolean = false;
@@ -60,6 +61,14 @@ export class ProfileComponent implements OnInit {
 
     public changePage(pageNumber: number) {
       this.displayedPage = pageNumber;
+    }
+
+    public editAboutMe() {
+      this.editingPage = true;
+    }
+
+    public saveEdits() {
+      this.editingPage = false;
     }
 
 }
